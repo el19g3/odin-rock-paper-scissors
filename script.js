@@ -30,13 +30,14 @@ function getComputerChoice() {
 
 function getUserChoice() {
       let userInput = prompt("Please enter either 'rock', 'paper', or 'scissors'");
-      return userInput.toLowerCase();
+      userInput = userInput.toLowerCase();
+      return userInput;
 }
 
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 
-// CREATE a function called determineWinner
+// CREATE a function called playRound
 //       IF userChoice is 'rock'
 //             CASE computerChoice is 'paper'
 //                   RETURN 'The computer won!'
@@ -61,7 +62,7 @@ function getUserChoice() {
 //       ELSE
 //             RETURN 'Please enter a valid choice'
 
-function determineWinner(userChoice, computerChoice) {
+function playRound(userChoice, computerChoice) {
       if (userChoice == 'rock') {
             switch (computerChoice) {
                   case 'paper':
@@ -111,14 +112,52 @@ function determineWinner(userChoice, computerChoice) {
 //--------------------------------------------------------------
 //--------------------------------------------------------------
 
-//THE GAME
-while (true) {
-      let playerSelection = getUserChoice();
-      let computerSelection = getComputerChoice();
-      console.log("The computer chooses " + computerSelection);
-      console.log(determineWinner(playerSelection, computerSelection));
-      let playAgain = prompt("Would you like to stop? (say 'y' if yes)").toLowerCase();
-      if (playAgain == 'y') {
-            break;
+// CREATE a function called game
+//       FOR five times call the function playRound
+//             IF the result of playRound is 'The computer won!'
+//                   ADD one to the computer score
+//             ELSE IF the result of playRound is 'You won!'
+//                   ADD one to the user score
+//       END of for loop
+//       IF the computer score is greater than the user score
+//             RETURN 'The computer won the game!'
+//       ELSE IF the user score is greater than the computer score
+//             RETURN 'You won the game!'
+//       ELSE
+//             RETURN 'The game is a tie!'
+
+function game() {
+      let computerScore = 0;
+      let userScore = 0;
+      for (let i = 0; i < 5; i++) {
+            let computerSelection = getComputerChoice();
+            let playerSelection = getUserChoice();
+            console.log("You choose " + playerSelection);
+            console.log("The computer chooses " + computerSelection);
+            let result = playRound(playerSelection, computerSelection);
+            console.log(result);
+            console.log("--------------------");
+            if (result[4] == 'c') {
+                  computerScore++;
+            }
+            else if (result[4] == 'w') {
+                  userScore++;
+            }
+      }
+      console.log("FINAL RESULTS:")
+      console.log("The computer's score is " + computerScore);
+      console.log("Your score is " + userScore);
+      if (computerScore > userScore) {
+            return 'The computer won the game!';
+      }
+      else if (userScore > computerScore) {
+            return 'You won the game!';
+      }
+      else {
+            return 'The game is a tie!';
       }
 }
+
+
+//THE GAME
+console.log(game());

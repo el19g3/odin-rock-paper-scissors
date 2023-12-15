@@ -143,6 +143,11 @@ function game() {
             else if (result[4] == 'w') {
                   userScore++;
             }
+            else {
+                  console.log("Replay this round!");
+                  console.log("--------------------");
+                  i--;
+            }
       }
       console.log("FINAL RESULTS:")
       console.log("The computer's score is " + computerScore);

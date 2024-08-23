@@ -1,12 +1,3 @@
-//Rock, Paper, or Scissors GAME
-
-// CREATE a function called getComputerChoice
-//       STORE a number between 0 and 2 in a variable called randomNumber
-//       IF randomNumber is 0 RETURN 'rock'
-//       ELSE IF randomNumber is 1 RETURN 'paper'
-//       ELSE RETURN 'scissors'
-// END of getComputerChoice function
-
 function getComputerChoice() {
       let randomNumber = Math.floor(Math.random() * 3);
       if (randomNumber == 0) {
@@ -20,47 +11,11 @@ function getComputerChoice() {
       }
 }
 
-//--------------------------------------------------------------
-//--------------------------------------------------------------
-
-// CREATE a function called getUserChoice
-//       ASK the user to enter either 'rock', 'paper', or 'scissors' and STORE their response in a variable called userInput
-//       RETURN userInput only after it is lowercase
-// END of getUserChoice function
-
 function getUserChoice() {
       let userInput = prompt("Please enter either 'rock', 'paper', or 'scissors'");
       userInput = userInput.toLowerCase();
       return userInput;
 }
-
-//--------------------------------------------------------------
-//--------------------------------------------------------------
-
-// CREATE a function called playRound
-//       IF userChoice is 'rock'
-//             CASE computerChoice is 'paper'
-//                   RETURN 'The computer won!'
-//             CASE computerChoice is 'scissors'
-//                   RETURN 'You won!'
-//             CASE computerChoice is 'rock'
-//                   RETURN 'The game is a tie!'
-//       ELSE IF userChoice is 'paper'
-//             CASE computerChoice is 'scissors'
-//                   RETURN 'The computer won!'
-//             CASE computerChoice is 'rock'
-//                   RETURN 'You won!'
-//             CASE computerChoice is 'paper'
-//                   RETURN 'The game is a tie!'
-//       ELSE IF userChoice is 'scissors'
-//             CASE computerChoice is 'rock'
-//                   RETURN 'The computer won!'
-//             CASE computerChoice is 'paper'
-//                   RETURN 'You won!'
-//             CASE computerChoice is 'scissors'
-//                   RETURN 'The game is a tie!'
-//       ELSE
-//             RETURN 'Please enter a valid choice'
 
 function playRound(userChoice, computerChoice) {
       if (userChoice == 'rock') {
@@ -107,25 +62,6 @@ function playRound(userChoice, computerChoice) {
       }
 }
 
-
-
-//--------------------------------------------------------------
-//--------------------------------------------------------------
-
-// CREATE a function called game
-//       FOR five times call the function playRound
-//             IF the result of playRound is 'The computer won!'
-//                   ADD one to the computer score
-//             ELSE IF the result of playRound is 'You won!'
-//                   ADD one to the user score
-//       END of for loop
-//       IF the computer score is greater than the user score
-//             RETURN 'The computer won the game!'
-//       ELSE IF the user score is greater than the computer score
-//             RETURN 'You won the game!'
-//       ELSE
-//             RETURN 'The game is a tie!'
-
 function game() {
       let computerScore = 0;
       let userScore = 0;
@@ -163,6 +99,4 @@ function game() {
       }
 }
 
-
-//THE GAME
 console.log(game());

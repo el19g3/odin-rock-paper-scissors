@@ -1,3 +1,7 @@
+
+let computerScore = 0;
+let humanScore = 0;
+
 function getComputerChoice() {
       let randomNumber = Math.floor(Math.random() * 3);
       if (randomNumber == 0) {
@@ -20,9 +24,6 @@ function getHumanChoice() {
       return humanInput;
 }
 
-let computerScore = 0;
-let humanScore = 0;
-
 function playRound(humanChoice, computerChoice) {
       const gameRules = {
             "rock": "scissors",
@@ -33,57 +34,47 @@ function playRound(humanChoice, computerChoice) {
             console.log('The game is a tie!');
       }
       else if (gameRules[humanChoice] == computerChoice) {
-            console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+            console.log(`You win, because ${humanChoice} beats ${computerChoice}!`);
             humanScore ++;
       }
       else {
-            console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+            console.log(`You lose, because ${computerChoice} beats ${humanChoice}!`)
             computerScore ++;
       }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+      computerScore = 0;
+      humanScore = 0;
+      for (let i = 0; i < 5; i++) {
+            
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
 
-console.log(humanSelection);
-console.log(computerSelection);
+            console.log("You choose " + humanSelection);
+            console.log("The computer chooses " + computerSelection);
+            
+            playRound(humanSelection, computerSelection);
+            
+            if (humanSelection == computerSelection) {
+                  console.log("Replay this round");
+                  i--;
+            }
+                       
+            console.log("--------------------");
+      }
+      console.log("FINAL RESULTS:")
+      console.log("The computer's score is " + computerScore);
+      console.log("Your score is " + humanScore);
+      if (computerScore > humanScore) {
+            return 'The computer won the game!';
+      }
+      else if (humanScore > computerScore) {
+            return 'You won the game!';
+      }
+      else {
+            return 'The game is a tie!';
+      }
+}
 
-playRound(humanSelection, computerSelection);
-
-// function game() {
-// 
-      // for (let i = 0; i < 5; i++) {
-            // let computerSelection = getComputerChoice();
-            // let playerSelection = getHumanChoice();
-            // console.log("You choose " + playerSelection);
-            // console.log("The computer chooses " + computerSelection);
-            // let result = playRound(playerSelection, computerSelection);
-            // console.log(result);
-            // console.log("--------------------");
-            // if (result[4] == 'c') {
-                  // computerScore++;
-            // }
-            // else if (result[4] == 'w') {
-                  // humanScore++;
-            // }
-            // else {
-                  // console.log("Replay this round!");
-                  // console.log("--------------------");
-                  // i--;
-            // }
-      // }
-      // console.log("FINAL RESULTS:")
-      // console.log("The computer's score is " + computerScore);
-      // console.log("Your score is " + humanScore);
-      // if (computerScore > humanScore) {
-            // return 'The computer won the game!';
-      // }
-      // else if (humanScore > computerScore) {
-            // return 'You won the game!';
-      // }
-      // else {
-            // return 'The game is a tie!';
-      // }
-// }
-// 
-// console.log(game());
+console.log(playGame());

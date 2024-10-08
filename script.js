@@ -46,23 +46,49 @@ function playRound(humanChoice, computerChoice) {
 function playGame() {
       computerScore = 0;
       humanScore = 0;
-      for (let i = 0; i < 5; i++) {
-            
-            const humanSelection = getHumanChoice();
-            const computerSelection = getComputerChoice();
+      
+      const buttonRock = document.createElement("button");
+      const buttonPaper = document.createElement("button");
+      const buttonScissors = document.createElement("button");
 
-            console.log("You choose " + humanSelection);
-            console.log("The computer chooses " + computerSelection);
-            
-            playRound(humanSelection, computerSelection);
-            
-            if (humanSelection == computerSelection) {
-                  console.log("Replay this round");
-                  i--;
-            }
-                       
-            console.log("--------------------");
-      }
+      buttonRock.textContent = "Rock";
+      buttonPaper.textContent = "Paper";
+      buttonScissors.textContent = "Scissors";
+
+      document.body.appendChild(buttonRock);
+      document.body.appendChild(buttonPaper);
+      document.body.appendChild(buttonScissors);
+
+
+      const computerSelection = getComputerChoice();
+
+
+      buttonRock.addEventListener("click", () => {
+            playRound("rock", computerSelection);
+      })
+
+
+      buttonPaper.addEventListener("click", () => {
+            playRound("paper", computerSelection);
+      })
+
+
+      buttonScissors.addEventListener("click", () => {
+            playRound("scissors", computerSelection)
+      })
+
+
+
+
+      console.log("The computer chooses " + computerSelection);
+      
+      
+      if (humanSelection == computerSelection) {
+            console.log("Replay this round");
+            i--;
+      }         
+      console.log("--------------------");
+      
       console.log("FINAL RESULTS:")
       console.log("The computer's score is " + computerScore);
       console.log("Your score is " + humanScore);

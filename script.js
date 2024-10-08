@@ -15,14 +15,14 @@ function getComputerChoice() {
       }
 }
 
-function getHumanChoice() {
-      let humanInput = "";
-      while (humanInput != "rock" && humanInput != "paper" && humanInput != "scissors") {
-            humanInput = prompt("Please enter either 'rock', 'paper', or 'scissors'");
-            humanInput = humanInput.toLowerCase();
-      }
-      return humanInput;
-}
+// function getHumanChoice() {
+//       let humanInput = "";
+//       while (humanInput != "rock" && humanInput != "paper" && humanInput != "scissors") {
+//             humanInput = prompt("Please enter either 'rock', 'paper', or 'scissors'");
+//             humanInput = humanInput.toLowerCase();
+//       }
+//       return humanInput;
+// }
 
 function playRound(humanChoice, computerChoice) {
       const gameRules = {
@@ -60,33 +60,47 @@ function playGame() {
       document.body.appendChild(buttonScissors);
 
 
-      const computerSelection = getComputerChoice();
 
 
-      buttonRock.addEventListener("click", () => {
-            playRound("rock", computerSelection);
-      })
+      // buttonRock.addEventListener("click", () => {
+      //       playRound("rock", computerSelection);
+      // })
 
 
-      buttonPaper.addEventListener("click", () => {
-            playRound("paper", computerSelection);
-      })
+      // buttonPaper.addEventListener("click", () => {
+      //       playRound("paper", computerSelection);
+      // })
 
 
-      buttonScissors.addEventListener("click", () => {
-            playRound("scissors", computerSelection)
-      })
+      // buttonScissors.addEventListener("click", () => {
+      //       playRound("scissors", computerSelection)
+      // })
 
+      while (humanScore < 5 || computerScore < 5) {
 
-
-
-      console.log("The computer chooses " + computerSelection);
+            buttonRock.addEventListener("click", () => {
+                  const computerSelection = getComputerChoice();
+                  playRound("rock", computerSelection);
+            })
       
       
-      if (humanSelection == computerSelection) {
-            console.log("Replay this round");
-            i--;
-      }         
+            buttonPaper.addEventListener("click", () => {
+                  const computerSelection = getComputerChoice();
+                  playRound("paper", computerSelection);
+            })
+      
+      
+            buttonScissors.addEventListener("click", () => {
+                  const computerSelection = getComputerChoice();
+                  playRound("scissors", computerSelection);
+            })
+            
+      
+      }
+
+//THE CODE DOES NOT WORK!
+
+      
       console.log("--------------------");
       
       console.log("FINAL RESULTS:")
